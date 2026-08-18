@@ -21,9 +21,9 @@ async function main() {
     pageSize: 10,
   });
 
-  console.log(`Found ${transactions.length} transactions\n`);
+  console.log(`Found ${transactions.result.transactions.length} transactions\n`);
 
-  const normalized = normalizeMany(transactions);
+  const normalized = normalizeMany(transactions.result.transactions);
   for (const tx of normalized) {
     console.log(`${tx.status === "success" ? "OK" : "FAILED"}  ${tx.amount} ${tx.token}  ${tx.timestamp}  ${tx.hash}`);
   }
